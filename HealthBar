@@ -1,0 +1,62 @@
+#include <iostream>
+#include <bits/stdc++.h>
+#include <windows.h>
+#define RESET "\033[0m"
+#define RED "\033[31m"
+#define GREEN "\033[32m"
+#define YELLOW "\033[33m"
+
+using namespace std;
+
+short int X, Y;
+COORD coord = {X, Y};
+
+void gotoxy(int x, int y) {
+  coord.X = x;
+  coord.Y = y;
+  SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), coord);
+}
+
+int main(){
+
+    cout << RED << " MAX DMG !" << RESET;
+
+    cout << endl << endl;
+    int n;
+    int x;
+    cin >> n;
+    if(n <= 15){x=20;}
+    else{x=10;}
+    for(int i=30;i>0;i--){
+        char x=219; 
+        if(i >= 22){
+            gotoxy(4,4);
+            for(int j=i;j>0;--j){cout << GREEN << x;}
+        }else if(i >= 12 ){
+            gotoxy(4,4);
+            for(int j=i;j>0;--j){cout << YELLOW << x << RESET;}
+        }else{
+            gotoxy(4,4);
+            for(int j=i;j>0;--j){cout << RED << x << RESET;}
+        }
+            for(int j=30-i;j>0;--j){cout << " ";}
+        Sleep(200);    
+    }
+
+    for(int i=30;i>x;i--){
+        char x=219; 
+        if(i >= 22){
+            gotoxy(4,10);
+            for(int j=i;j>0;--j){cout << GREEN << x;}
+        }else if(i >= 12 ){
+            gotoxy(4,10);
+            for(int j=i;j>0;--j){cout << YELLOW << x << RESET;}
+        }else{
+            gotoxy(4,10);
+            for(int j=i;j>0;--j){cout << RED << x << RESET;}  
+        }
+            for(int j=30-i;j>0;--j){cout << " ";}
+        Sleep(200);    
+    }
+    return 0;
+}
